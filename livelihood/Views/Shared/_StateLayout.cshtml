@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>@ViewData["Title"]-SPLCS</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="~/img/splcs.png" rel="icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/vendor/bootstrap/css/bootstrap.min.css" />
+    <link href="~/vendor/boxicons/css/boxicons.css" rel="stylesheet" />
+    <link href="~/vendor/icofont/icofont.min.css" rel="stylesheet" />
+    <link href="~/vendor/owl.carousel/assets/owl.carousel.css" rel="stylesheet" />
+    <link href="~/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="~/vendor/venobox/venobox.css" rel="stylesheet" />
+    <link href="~/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="~/css/CustomSheet.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+
+
+
+</head>
+<body>
+    <div class="topstreap">
+       @* <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="ph-tel">
+                        <span><i class="bx bx-mobile" aria-hidden="true"></i>+91 999 999 9999</span>
+                        <span><i class="bx bxs-envelope" aria-hidden="true"></i><a href="mailto:info@livelihood.com" title="info@livelihood.com">info@livelihood.com</a></span>
+                    </div>
+                </div>
+                <div class="col-md-6 offset-md-2">
+                    <div class="top-rightside">
+                        <small class="c-skip">Skip to main content</small>
+                        <div class="text-increaser">
+                            <figure title="Text Increaser">
+                                <img src="~/images/text-ico.png" />
+                            </figure>
+                            <dfn>
+                                <span>A</span>
+                                <span>-A</span>
+                                <span>+A</span>
+                            </dfn>
+                        </div>
+                        <div class="t-social">
+                            <figure title="Social Media">
+                                <img src="~/images/ico-social.png" />
+                            </figure>
+                            <ul>
+                                <li><a class="twitter"><i class="bx bxl-twitter"></i></a></li>
+                                <li><a class="facebook"><i class="bx bxl-facebook"></i></a></li>
+                                <li><a class="instagram"><i class="bx bxl-instagram"></i></a></li>
+                                <li><a class="google-plus"><i class="bx bxl-skype"></i></a></li>
+                                <li><a class="linkedin"><i class="bx bxl-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="t-sitemap">
+                            <a title="Sitemap">
+                                <img src="~/images/ico-sitemap.png" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    </div>
+    <!-- ======= Header ======= -->
+    <header id="header" class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 align-items-center">
+                    <div class="logo p-3">
+                        <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center">
+                            <div class="d-flex" style="width:8rem">
+                                <img src="~/img/cg.png" class=" img_logo" />
+                                <img src="~/img/splcs.png" class=" img_logo" />
+                            </div>
+                            <span>
+                                <small>  State Project Livelihood College Society.</small>
+                                @*<small>College Society.</small>*@
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="login-top text-right">
+                        <label>@TempData["userdetail"]</label>
+                        <a asp-controller="Home" asp-action="Logout" class="get-started-btn scrollto">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <!-- End Header -->
+    @*<header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Livelihood_coremvc</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>*@
+    <div>
+
+        @RenderBody()
+
+    </div>
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="blue-bg clients">
+        <div class="container-fluid" data-aos="zoom-in">
+            <div class="row justify-content-center">
+                <div class="col-xl-10">
+                    <div class="owl-carousel clients-carousel" style="align-items:center;">
+                        <figure style="align-items:center!important">
+                            <img src="~/img/ministry.png" alt="" class="client-img-size">
+                        </figure>
+                        <figure>
+                            <img src="~/img/pmkvy.png" alt="" class="client-img-size">
+                        </figure>
+                        <figure>
+                            <img src="~/img/skillindia.png" alt="" class="client-img-size">
+                        </figure>
+                        <figure>
+                            <img src="~/img/nsdc.png" alt="" class="client-img-size">
+                        </figure>
+                        <figure>
+                            <img src="~/img/smart.png" alt="" class="client-img-size">
+                        </figure>
+                        <figure>
+                            <img src="~/img/cssda2.png" alt="" class="client-img-size">
+                        </figure>
+                        <figure>
+                            <img src="~/img/niclogo.png" alt="" class="client-img-size">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Clients Section -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+      @*  <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h3>State Project Livelihood College Society<span>.</span></h3>
+                        <p>
+                            Old PHQ (Police Head Quarter), <br>
+                            Near Raj Bhawan,<br>
+                            Civil Line, <br>
+                            Raipur -492001,Chhattisgarh<br><br />
+
+                        </p>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a href="https://cssda.cg.nic.in/" target="_blank">CSSDA</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://cgemployment.gov.in/n/" target="_blank">Employment</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://pmkvyofficial.org/" target="_blank">PMKVY</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="http://sdis.gov.in/" target="_blank">SDI</a></li>
+
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Information</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a>Upcoming Counseling</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a>Circular</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a>Act/Notifications/Regulations</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a>Need base survey</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a>Suggestion</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-links">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><i class="bx bx-chevron-right"></i> <a>Email - cssda.cg@gov.in</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a>0771-4264020</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a>0771-2424562</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a>0771-4099953</a></li>
+
+                            <li><i class="bx bx-chevron-right"></i> <a>Click Here CSSDA Contact details</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+*@
+
+        <div class="container-fluid">
+
+            <div class="text-center pb-3">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>SPLCS</span></strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/presento-bootstrap-corporate-template/ -->
+                    Designed, Developed & Hosted By <a>National Informatics Center , Chhattisgarh</a>
+                </div>
+                <img src="~/images/nic_logo.gif" style="width:10rem;" />
+            </div>
+
+            <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                <a class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+    <!-- Vendor JS Files -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/vendor/php-email-form/validate.js"></script>
+    <script src="~/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="~/vendor/counterup/counterup.min.js"></script>
+    <script src="~/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/vendor/venobox/venobox.min.js"></script>
+    <script src="~/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+
+    <script src="~/vendor/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

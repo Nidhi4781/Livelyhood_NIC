@@ -1,0 +1,397 @@
+﻿@model livelihood.Models.TraineeRegistration
+
+@{
+    ViewData["Title"] = "SPLCS -Trainee Registration";
+    Layout = "~/Views/Shared/RegistrationLayout.cshtml";
+}
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+        };
+    </script>
+}
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        document.getElementById('divgrampanchayat').style.display = 'none';
+        document.getElementById('divcity').style.display = 'none';
+        document.getElementById('divWorkType').style.display = 'block';
+        $("#ddl_dist").change(function () {
+            var distcode = $('option:selected', $(this)).val();
+            var data = {
+                distcode: distcode
+            };
+
+            $.ajax({
+                url: "/Home/GetBlockbyDist",
+                type: "POST",
+                dataType: "json",
+                data: data,
+
+                success: function (result) {
+                    $("#ddl_block").empty().append('<option selected="selected" value="">-- Select --</option>');
+                    $.each(result, function (index, value) {
+                        $('#ddl_block').append('<option value="' + value.blockCode + '">' + value.blockNameinEnglish + '</option>');
+                    });
+                },
+                error: function (err) {
+                }
+            });
+            $.ajax({
+                url: "/Home/GetCitybyDist",
+                type: "POST",
+                dataType: "json",
+                data: data,
+                success: function (result) {
+                    $("#ddl_city").empty().append('<option selected="selected" value="">-- Select --</option>');
+                    $.each(result, function (index, value) {
+                        $('#ddl_city').append('<option value="' + value.localBodyCode + '">' + value.localBodyNameinEnglish + '</option>');
+                    });
+                },
+                error: function (err) {
+                }
+            });
+            $.ajax({
+                url: "/Home/GetVidhanSabha",
+                type: "POST",
+                dataType: "json",
+                data: data,
+                success: function (result) {
+                    $("#ddl_VidhanSabha").empty().append('<option selected="selected" value="0">-- Select --</option>');
+                    $.each(result, function (index, value) {
+                        $('#ddl_VidhanSabha').append('<option value="' + value.constituenyNumber + '">' + value.constituenyName + '</option>');
+                    });
+                },
+                error: function (err) {
+                }
+            });
+
+        });
+
+        $("#ddl_LCdist").change(function () {
+            var distcode = $('option:selected', $(this)).val();
+            var data = {
+                distcode: distcode
+            };
+
+            $.ajax({
+                url: "/Home/loadLC",
+                type: "POST",
+                dataType: "json",
+                data: data,
+                success: function (result) {
+                    $("#ddl_LCCode").empty().append('<option selected="selected" value="">-- Select --</option>');
+                    $.each(result, function (index, value) {
+                        $('#ddl_LCCode').append('<option value="' + value.main_VTPRegNo + '">' + value.vtpName + '</option>');
+                    });
+                },
+                error: function (err) {
+                }
+            });
+        });
+
+        $("#ddl_city").change(function () {
+            var citycode = $('option:selected', $("#ddl_city")).val();
+            var data = {
+                citycode: citycode
+            };
+            $.ajax({
+                url: "/Home/GetWard",
+                type: "POST",
+                dataType: "json",
+                data: data,
+                success: function (result) {
+                    $("#ddl_ward").empty().append('<option selected="selected" value="0">-- Select --</option>');
+                    $.each(result, function (index, value) {
+                        //alert(JSON.stringify(value));
+                        $('#ddl_ward').append('<option value="' + value.localBodyCode + '">' + value.wardName + '</option>');
+                    });
+                },
+                error: function (err) {
+                }
+            });
+        });
+        $("#ddl_gramPanchyat").change(function () {
+            var distcode = $('option:selected', $("#ddl_dist")).val();
+            var gramPanchyatcode = $('option:selected', $(this)).val();
+            var data = {
+                distcode: distcode,
+                gramPanchyatcode: gramPanchyatcode
+            };
+            $.ajax({
+                url: "/Home/GetGrambyDist_Block",
+                type: "POST",
+                dataType: "json",
+                data: data,
+                success: function (result) {
+                    $("#ddl_gram").empty().append('<option selected="selected" value="0">-- Select --</option>');
+                    $.each(result, function (index, value) {
+                        $('#ddl_gram').append('<option value="' + value.villagecode + '">' + value.villagename + '</option>');
+                    });
+                },
+                error: function (err) {
+                }
+            });
+        });
+    });
+    function yesnoCheck() {
+        if (document.getElementById('rbyesno').checked) {
+            document.getElementById('divcity').style.display = 'block';
+            document.getElementById('divgrampanchayat').style.display = 'none';
+        }
+        else {
+            document.getElementById('divcity').style.display = 'none';
+            document.getElementById('divgrampanchayat').style.display = 'block';
+            var distcode = $('option:selected', $("#ddl_dist")).val();
+            var block = $('option:selected', $("#ddl_block")).val();
+            var data = {
+                distcode: distcode,
+                block: block
+            };
+            if (block != "0") {
+                document.getElementById('dvUrbanRural').style.display = 'block';
+                $.ajax({
+                    url: "/Home/GetGramPanchayatbyDist_block",
+                    type: "POST",
+                    dataType: "json",
+                    data: data,
+
+                    success: function (result) {
+                        // alert(JSON.stringify(result));
+                        $("#ddl_gramPanchyat").empty().append('<option selected="selected" value="">-- Select --</option>');
+                        $.each(result, function (index, value) {
+                            $('#ddl_gramPanchyat').append('<option value="' + value.localBodyCode + '">' + value.grampanchayatName + '</option>');
+                        });
+                    },
+                    error: function (err) {
+                    }
+                });
+            }
+        }
+    }
+    function yesnoCheckWS() {
+        if (document.getElementById('rbyesnoWS').checked) {
+            document.getElementById('divWorkType').style.display = 'block';
+        }
+        else {
+            document.getElementById('divWorkType').style.display = 'none';
+        }
+    }
+
+</script>
+
+
+<div class="top-btnsection d-flex justify-content-between align-items-center">
+    @*  <div id="destination"> Create Idea </div>*@
+    <h1>Trainee Registration</h1>
+
+    <nav aria-label="breadcrumb" class="breadcrumb-outer">
+       
+    </nav>
+</div>
+<h4 class="mx-auto col-10 col-md-8 col-lg-6">Trainee Registration</h4>
+<hr />
+<div class="card card-bordered">
+    <div class="card card-body details">
+        <div class="row">
+            @Html.Raw(TempData["msg"])
+            <div class="mx-auto col-10 col-md-8 col-lg-6">
+                <form asp-action="SaveRegistration">
+                   @* <form class="logistics-form validate-form" method="post" action="" enctype="multipart/form-data" autocomplete="off">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="Dist" class="control-label"></label>
+                        <select asp-for="Dist" id="ddl_LCdist" class="form-control" asp-items=@(new SelectList(ViewBag.Distdata,"DistrictCode","DistrictNameEnglish"))></select>
+                        <span asp-validation-for="Dist" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LCCode" class="control-label"></label>
+                        <select asp-for="LCCode" id='ddl_LCCode' class="form-control"></select>
+                        <span asp-validation-for="LCCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="coursecode" class="control-label"></label>
+                        <select asp-for="coursecode" class="form-control" asp-items=@(new SelectList(ViewBag.coursedata,"coursecode","coursename"))></select>
+                        <span asp-validation-for="coursecode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Traineename" class="control-label"></label>
+                        <input asp-for="Traineename" class="form-control" />
+                        <span asp-validation-for="Traineename" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Fname" class="control-label"></label>
+                        <input asp-for="Fname" class="form-control" />
+                        <span asp-validation-for="Fname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Contactno" class="control-label"></label>
+                        <input asp-for="Contactno" class="form-control" />
+                        <span asp-validation-for="Contactno" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Gender" class="control-label"></label>
+                        <select name="Gender" class="form-control" asp-items="@ViewBag.genders"></select>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IsDivyang" class="control-label"></label>
+                        <select id='IsDivyang' name='IsDivyang' class="form-control">
+                            <option value=''>--Select --</option>
+                            <option value='N'>No</option>
+                            <option value='Y'>Yes</option>
+                        </select>
+                        <span asp-validation-for="IsDivyang" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Category" class="control-label"></label>
+                        <select id='Category' name='Category' class="form-control">
+                            <option value=''>--Select --</option>
+                            <option value='ST'>ST</option>
+                            <option value='SC'>SC</option>
+                            <option value='OB'>OBC</option>
+                            <option value='GN'>GEN</option>
+                        </select>
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AddDist" class="control-label"></label>
+                        <select id="ddl_dist" asp-for="AddDist" class="form-control" asp-items=@(new SelectList(ViewBag.Distdata,"DistrictCode","DistrictNameEnglish"))></select>
+                        <span asp-validation-for="AddDist" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AddBlock" class="control-label"></label>
+                        <select id="ddl_block" asp-for="AddBlock" class="form-control"></select>
+                        <span asp-validation-for="AddBlock" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AddState" class="control-label"></label>
+                        <select id='ddl_state' asp-for="AddState" class="form-control">
+                            <option value='22'>Chhattisgarh</option>
+                        </select>
+                        <span asp-validation-for="AddState" class="text-danger"></span>
+                    </div>
+                    <div class="form-group;row mt-2" id="dvUrbanRural">
+                        <label asp-for="UrbanRural" class="control-label">Urban / Rural </label>
+                        <input asp-for="UrbanRural" id="rbyesno" type="radio" value="U" onclick="javascript:yesnoCheck();" /> Urban
+                        <input asp-for="UrbanRural" id="rbyesno" type="radio" value="R" onclick="javascript:yesnoCheck();" /> Rural
+                    </div>
+                    <div class="form-group;row mt-2" id="divcity">
+                        <div class="form-group">
+                            <label asp-for="City" class="control-label"></label>
+                            <select id="ddl_city" asp-for="City" class="form-control"></select>
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Ward" class="control-label"></label>
+                            <select id="ddl_ward" asp-for="Ward" class="form-control"></select>
+                            <span asp-validation-for="Ward" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group;row mt-2" id="divgrampanchayat">
+                        <div class="form-group">
+                            <label asp-for="GramPanchayat" class="control-label"></label>
+                            <select id="ddl_gramPanchyat" asp-for="GramPanchayat" class="form-control"></select>
+                            <span asp-validation-for="GramPanchayat" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Gram" class="control-label"></label>
+                            <select id="ddl_gram" asp-for="Gram" class="form-control"></select>
+                            <span asp-validation-for="Gram" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PinCode" class="control-label"></label>
+                        <input asp-for="PinCode" class="form-control" />
+                        <span asp-validation-for="PinCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="VidhanSabha" class="control-label"></label>
+                        <select id="ddl_VidhanSabha" asp-for="VidhanSabha" class="form-control"></select>
+                        <span asp-validation-for="VidhanSabha" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Education" class="control-label"></label>
+                        <select asp-for="Education" id="ddl_Education" class="form-control" asp-items=@(new SelectList(ViewBag.Edudata,"code","name"))></select>
+                        <span asp-validation-for="Education" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="WorkingStatus" class="control-label">Working Status</label>
+                        <input asp-for="WorkingStatus" id="rbyesnoWS" type="radio" value="1" onclick="javascript:yesnoCheckWS();" checked="true" /> Yes
+                        <input asp-for="WorkingStatus" id="rbyesnoWS" type="radio" value="0" onclick="javascript:yesnoCheckWS();" /> No
+                        <span asp-validation-for="WorkingStatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group;row mt-2" id="divWorkType">
+                        <div class="form-group">
+                            <label asp-for="WorkType" class="control-label">Work Type</label>
+                            <input asp-for="WorkType" id="rbyesno" type="radio" value="E" onclick="javascript:yesnoCheck();" /> Employed
+                            <input asp-for="WorkType" id="rbyesno" type="radio" value="S" onclick="javascript:yesnoCheck();" /> Self Employed
+                            <span asp-validation-for="WorkType" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="WorkTypeDetails" class="control-label">If Employed Name of Organisation / If Self-employed Name of Business </label>
+                            <input asp-for="WorkTypeDetails" class="form-control" />
+                            <span asp-validation-for="WorkTypeDetails" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SourceOfInformation" class="control-label"></label>
+                        <select id='SourceOfInformation' name='SourceOfInformation' class="form-control">
+                            <option value=''>--Select --</option>
+                            <option value='I'>Internet Search</option>
+                            <option value='S'>Social Media</option>
+                            <option value='G'>Govt.Offical</option>
+                            <option value='F'>Friend or Relative</option>
+                        </select>
+                        <span asp-validation-for="SourceOfInformation" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="applyreason" class="control-label"></label>
+                        <input asp-for="applyreason" class="form-control" />
+                        <span asp-validation-for="applyreason" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="isDeclaration" class="control-label">
+                            Declaration:
+                            I declare that all the information provided as above are true to the best of my knowledge and any misleading or false information may enable the authorities to reject my application without any notice. Hereby I also declare to allow the authorities to use my information for preparation of various reports and documents and to handover any of the information to the Government as and when sought for.
+                        </label>
+
+                        <input asp-for="isDeclaration" type="checkbox" value="true" checked="checked">
+                        <span asp-validation-for="isDeclaration" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
+*@

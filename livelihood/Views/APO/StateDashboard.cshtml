@@ -1,0 +1,214 @@
+﻿@{
+    ViewBag.Title = "StateDashboard";
+  Layout = "~/Views/Shared/_APOLayout.cshtml";
+}
+@{
+    <script>
+        $(document).on('click', '.confirm', function () {
+            return confirm($(this).attr('data-confirm'));
+        });
+        $(document).on('click', '.status_filter', function () {
+
+        });
+    </script>
+  
+}
+<style>
+    #chartdiv {
+        width: 100%;
+        height: 300px;
+    }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<form asp-controller="APO" asp-action="StateDashboard" asp-antiforgery="true" method="get">
+    <!-- Dashboard -->
+
+    <div class="top-btnsection d-flex justify-content-between align-items-center">
+        <div id="destination"><h1>Idea List</h1> </div>
+      
+    </div>
+    <section class="dashboard">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <h3 class="d-header">Dashboard</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-6">
+                    <div class="small-box bg-blue">
+                        <div class="inner d-flex">
+                            <div class="card-head">
+                                <h2 style="padding:10px"><Label ID="lbl_total_lc" style="font-size:2rem!important;">@ViewData["TotalLC"]</Label></h2>
+                                <a asp-controller="APO" asp-action="LivelihoodColleges">Total Training Completed"</a>
+                            </div>
+                            <div class="icon">
+                                <i class='bx bxs-institution'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <div class="small-box bg-green">
+                        <div class="inner d-flex">
+                            <div class="card-head">
+                                 <h2 style="padding:10px"><Label ID="lbl_total_undert" style="font-size:2rem!important;">@ViewData["TotalLC"]</Label></h2>
+                                <a asp-controller="APO" asp-action="LivelihoodColleges">Total Undertraining"</a>
+                            </div>
+                            <div class="icon">
+                                <i class='bx bxs-graduation'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <div class="small-box bg-yellow">
+                        <div class="inner d-flex">
+                            <div class="card-head">
+                                <h3 style="padding:10px"><asp:Label ID="lbl_total_reg" runat="server"> @ViewData["TotalReg"]</asp:Label></h3>
+                                <a asp-controller="APO" asp-action="RegisteredBeneficiaries">Total Training Pending to Start </a>
+                            </div>
+                            <div class="icon">
+                                <i class='bx bx-group'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <div class="small-box bg-red">
+                        <div class="inner d-flex">
+                            <div class="card-head">
+                                <h3 style="padding:10px"><asp:Label ID="lbl_totalcourse" runat="server"> @ViewData["Totalcourse"]</asp:Label></h3>
+                                <a asp-controller="APO" asp-action="RegisteredCourses">Assessment Completed </a>
+                            </div>
+                            <div class="icon">
+                                <i class='bx bxs-book-alt'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <div class="small-box bg-purple">
+                        <div class="inner d-flex">
+                            <div class="card-head">
+                                <h3 style="padding:10px"><asp:Label ID="lbl_total_placed" runat="server"> @ViewData["Totalplaced"] </asp:Label></h3>
+                                <a asp-controller="APO" asp-action="PlacedBeneficiaries">Assessment Pending</a>
+                            </div>
+                            <div class="icon">
+                                <i class='bx bxs-buildings'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <div class="small-box bg-orange">
+                        <div class="inner d-flex">
+                            <div class="card-head">
+                                <h3 style="padding:10px"><asp:Label ID="lbl_total_under" runat="server"> @ViewData["TotalUnder"] </asp:Label></h3>
+                                <a asp-controller="APO" asp-action="UndertrainingBeneficiaries"> Certificate Pending</a>
+                            </div>
+                            <div class="icon">
+                                <i class='bx bxs-book-reader'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="detail_panel">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-header bg-blue">
+                            <h3 class="c-title card-title  p-1"><i class='bx bxs-pie-chart-alt-2 p-1'></i>Courses</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-md-12">
+                                <a asp-controller="APO" asp-action="freshAppPending">Pending Application Forms</a>
+                                <asp:Label ID="lbl_coursereq" runat="server" CssClass="badge bg-blue" Style="float:right">@ViewData["PendingAF"]</asp:Label>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <hr class="hr-blue" />
+                            </div>
+                            <div class="col-md-12">
+                                <label>LTBs Application</label>
+                                <asp:Label ID="Label1" runat="server" CssClass="badge bg-blue" Style="float:right">5</asp:Label>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <hr class="hr-blue" />
+                            </div>
+                            <div class="col-md-12">
+                                <label>LTB Numbers Pending and Received</label>
+                                <asp:Label ID="Label2" runat="server" CssClass="badge bg-blue" Style="float:right">5</asp:Label>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <hr class="hr-blue" />
+                            </div>
+                            <div class="col-md-12">
+                                <label>Assessment Status</label>
+                                <asp:Label ID="Label3" runat="server" CssClass="badge bg-blue" Style="float:right">5</asp:Label>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <hr class="hr-blue" />
+                            </div>
+                            <div class="col-md-12">
+                                <label>Certificate Status</label>
+                                <asp:Label ID="Label4" runat="server" CssClass="badge bg-blue" Style="float:right">5</asp:Label>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <hr class="hr-blue" />
+                            </div>
+                            <div class="col-md-12">
+                                <label>Attendance</label>
+                                <asp:Label ID="Label5" runat="server" CssClass="badge bg-blue" Style="float:right">5</asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-header bg-green">
+                            <h3 class="c-title card-title  p-1"><i class='bx bxs-pie-chart-alt-2 p-1'></i>TBN</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="col-md-12">
+                                <label>Analytical Reports</label>
+                                <asp:Label ID="Label6" runat="server" CssClass="badge bg-green" Style="float:right">69</asp:Label>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <hr class="hr-green" />
+                            </div>
+                            <div class="col-md-12">
+                                <label>Submit Query to State</label>
+                                <asp:Label ID="Label7" runat="server" CssClass="badge bg-green" Style="float:right">69</asp:Label>
+                            </div>
+                      
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-header bg-orange">
+                            <h3 class="c-title card-title  p-1"><i class='bx bxs-pie-chart-alt-2 p-1'></i>ABN</h3>
+                        </div>
+                        <div class="card-body">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+

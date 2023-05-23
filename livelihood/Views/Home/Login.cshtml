@@ -1,0 +1,138 @@
+﻿@model livelihood.Models.userLevel
+
+
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form asp-controller="Home" asp-action="Login1" asp-antiforgery="true" method="post">
+    <section id="sec-login" class="sec-login">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="~/img/undraw_secure_login_pdn4.png" alt="Image" class="img-fluid">
+                </div>
+                <div class="col-md-6 contents">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <h3 style="font-weight:bold">Login</h3>
+
+                            </div>
+
+                            <div class="form-group pb-4">
+
+                                <label for="username">Username</label>
+                                <input asp-for="userID" type="text" class="form-control" id="username" placeholder="Username">
+                                <span asp-validation-for="userID" class="text-danger"></span>
+                            </div>
+                            <div class="form-group pb-4">
+                                <label for="username">Password</label>
+                                <input asp-for="password" type="password" class="form-control " id="password" placeholder="Password">
+                                <span asp-validation-for="password" class="text-danger"></span>
+                         
+                            </div>
+                            <div class="captcha form-group pb-2">
+                                <dnt-captcha asp-captcha-generator-max="99"
+                                             asp-captcha-generator-min="11"
+                                             asp-captcha-generator-language="English"
+                                             asp-captcha-generator-display-mode="SumOfTwoNumbers"
+                                             asp-use-relative-urls="true"
+                                             asp-placeholder="Enter Captcha"
+                                             asp-validation-error-message="Enter Captcha"
+                                             asp-font-name="Tahoma"
+                                             asp-font-size="50"
+                                             asp-fore-color="#333333"
+                                             asp-back-color="#413839"
+                                             asp-text-box-class="text-box form-control"
+                                             asp-text-box-template="<span class='input-group-prepend'><span class='form-group-text'></span></span>{0}"
+                                             asp-validation-message-class="text-danger"
+                                             asp-refresh-button-class="icofont-refresh icofont-2x m-2"
+                                             asp-use-noise="false" />
+
+                            </div>
+
+
+                            @*<asp:Button ID="btn_login" runat="server" CssClass="btn btn-block get-started-btn" Width="100%" Text="Login" OnClick="btn_login_Click" />*@
+
+                            <p class="pb-4" style="font-size:1.0rem; font-weight:bold; color:red;">  @ViewData["ErrorMessage"] </p>
+                            <input type="submit" value="Log In" name="Login" class="btn btn-block get-started-btn" style="width:100%">
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</form>
+@*}*@
+
+<style type="text/css">
+    .captcha img {
+        width: 15rem !important;
+    }
+
+    .captcha input[name='CaptchaInputText'] {
+        display: block !important;
+        width: 100% !important;
+        padding: .375rem .75rem !important;
+        font-size: 1rem !important;
+        font-weight: 400 !important;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        border-color: #f5c004 !important;
+        box-shadow: 0 1px 1px #f5c004 inset, 0 0 8px #f5c004 !important;
+        outline: 0 none !important;
+    }
+</style>
+<script src="~/vendor/js/SHA256.js"></script>
+<script type="text/javascript">
+
+    function SubmitsEncry() {
+
+        var Name, pass, sum;
+
+        var ranNo = document.getElementById('<%= hdnRanNo.ClientID %>').value;
+        Name = document.getElementById('<%= txtUserName.ClientID %>').value;
+        pass = document.getElementById('<%= password.ClientID %>').value;
+        sum = document.getElementById('<%= txtInput.ClientID %>').value;
+        if (Name == '') {
+            alert("Please enter user name.");
+            document.getElementById("txtUserName").focus();
+            return false;
+        }
+        else if (pass == '') {
+            alert("Please enter password.");
+            document.getElementById("txtPassword").focus();
+            return false;
+        }
+        else if (sum == '') {
+            alert("Please enter the captcha text.");
+            document.getElementById("txtInput").focus();
+            return false;
+        }
+        else {
+            pass = SHA256(pass);
+            var pwd = SHA256(ranNo.concat(pass));
+            document.getElementById('<%= txtPassword.ClientID %>').value = pwd;
+
+        }
+    }
+</script>
+
+

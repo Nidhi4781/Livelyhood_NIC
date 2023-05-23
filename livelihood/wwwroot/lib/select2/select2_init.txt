@@ -1,0 +1,84 @@
+HTML/View
+----------------
+<div class="col-lg-7">
+<input class="form-control autocomplete categoryId text-box single-line" data-source="/backend/categories/getcategories" data-val="true" data-val-number="The field Category must be a number." data-val-required="Please select the Category" id="CategoryID" name="CategoryID" placeholder="Please select the Category" type="number" value="" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="CategoryID" data-valmsg-replace="true"></span>
+                                    </div>
+--------------
+C# Controller
+--------
+public async Task<ActionResult> GetCategories(string q, int i)
+        {
+            int _skip = i == 1 ? 0 : (i - 1) * 20;
+
+            var _query = from c in db.Categories
+                         where c.IsDataActive && c.Name.Contains(q)
+                         orderby c.Name
+                         select new
+                         {
+                             c.ID,
+                             c.Name,
+                         };
+
+            Select2PagedResult _result = new Select2PagedResult
+            {
+                Total = await _query.OrderBy(t => t.Name).CountAsync(),
+                Results = (await _query.OrderBy(t => t.Name).Skip(_skip).Take(20).ToListAsync()).Select(c => new Select2Item
+                {
+                    id = c.ID,
+                    text = c.Name
+                }).ToList()
+            };
+
+            return Json(_result, JsonRequestBehavior.AllowGet);
+        }
+		
+
+JS
+------------------------
+$('input.autocomplete').each(function () {
+                $(this).removeClass('autocomplete')
+                var source = $(this).attr('data-source');
+                var multiple = $(this).attr('data-multiple') == 'true' ? true : false;
+                $(this).select2({
+                    multiple: multiple,
+                    minimumInputLength: 0,
+                    allowClear: true,
+                    ajax: {
+                        quietMillis: 150,
+                        url: function () {
+
+                                                        return source;
+                        },
+                        dataType: 'json',
+                        data: function (term, page) {
+                            return {
+                                i: page,
+                                q: term
+                            };
+                        },
+
+                        results: function (data, page) {
+                            var _hasMoreResults = (page * 20) < data.Total;
+                            return {
+                                results: data.Results,
+                                more: _hasMoreResults
+                            };
+                        }
+                    }
+                });
+
+                var deafult = $(this).attr('data-select2-default');
+
+                if (typeof deafult !== typeof undefined && deafult !== false) {
+                    var _item = $.parseJSON($(this).attr('data-select2-default'));
+                    $(this).select2('data', _item);
+                }
+            });
+
+            $('.form-group').livequery(function () {
+                if ($(this).find('input[data-val-required],textarea[data-val-required],textarea[data-val-summernote],select[data-val-required]').not('[type="checkbox"]').length > 0) {
+                    $(this).find('label').first().append('<span class="text-danger">&nbsp;*</span>');
+                }
+            });
+        }

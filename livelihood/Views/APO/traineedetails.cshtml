@@ -1,0 +1,146 @@
+﻿@model List<livelihood.Models.TraineeRegistration>
+
+@{
+    ViewData["Title"] = "traineedetails";
+    Layout = "~/Views/Shared/_APOLayout.cshtml";
+}
+
+<h4>Trainee Details</h4>
+<hr />
+<div class="row">
+    <div class="mx-auto col-10 col-md-8 col-lg-6">
+        <form asp-controller="APO" asp-action="Updatetraineedetail" method="post">
+            <div  class="text-danger"></div>
+            <div class="form-group">
+                Registration Number :
+                @Html.EditorFor(model => model[0].uniquetempsno)
+            </div>
+            <div class="form-group">
+                District :
+                @Html.EditorFor(model => model[0].Dist)
+            </div>
+            <div class="form-group">
+                Livelihood College Name :
+                @Html.EditorFor(model => model[0].LCCode)
+            </div>
+            <div class="form-group">
+                Livelihood College Name :
+                @Html.TextBoxFor(model => model[0].coursecode)
+            </div>
+            <div class="form-group">
+                Trainee Name:
+                @Html.TextBoxFor(model => model[0].Traineename)
+            </div>
+            <div class="form-group">
+                Father Name:
+                @Html.EditorFor(model => model[0].Fname)
+            </div>
+            <div class="form-group">
+                Contactno:
+                @Html.TextBoxFor(model => model[0].Contactno)
+            </div>
+             <div class="form-group">
+                Email:
+                @Html.EditorFor(model => model[0].Email)
+            </div>
+             <div class="form-group">
+                Gender:
+              
+                 <select name="Gender" class="form-control" asp-items="@ViewBag.genders"></select>
+                   @*@Html.DropDownListFor(model => model[0].Gender,new SelectList(Enum.GetValues(typeof(genders))),  new { @class = "form-control"} )*@
+                @*@Html.EditorFor(model => model[0].Gender)*@
+            </div>
+             <div class="form-group">
+                IsDivyang:
+                @Html.EditorFor(model => model[0].IsDivyang)
+            </div>
+             <div class="form-group">
+                Category:
+                @Html.EditorFor(model => model[0].Category)
+            </div>
+             <div class="form-group">
+                Address:
+                @Html.EditorFor(model => model[0].Address)
+            </div>
+             <div class="form-group">
+                AddDist:
+                @Html.EditorFor(model => model[0].AddDist)
+            </div>
+
+             <div class="form-group">
+                AddBlock:
+                @Html.EditorFor(model => model[0].AddBlock)
+            </div>
+             <div class="form-group">
+                AddState:
+                @Html.EditorFor(model => model[0].AddState)
+            </div>
+             <div class="form-group">
+                UrbanRural:
+                @Html.EditorFor(model => model[0].UrbanRural)
+            </div>
+             <div class="form-group">
+                City:
+                @Html.EditorFor(model => model[0].City)
+            </div>
+             <div class="form-group">
+                Ward:
+                @Html.EditorFor(model => model[0].Ward)
+            </div>
+             <div class="form-group">
+                GramPanchayat:
+                @Html.EditorFor(model => model[0].GramPanchayat)
+            </div>
+
+             <div class="form-group">
+                Gram:
+                @Html.EditorFor(model => model[0].Gram)
+            </div>
+             <div class="form-group">
+                PinCode:
+                @Html.EditorFor(model => model[0].PinCode)
+            </div>
+             <div class="form-group">
+                VidhanSabha:
+                @Html.EditorFor(model => model[0].VidhanSabha)
+            </div>
+             <div class="form-group">
+                Education:
+                @Html.EditorFor(model => model[0].Education)
+            </div>
+             <div class="form-group">
+                WorkingStatus:
+                @Html.EditorFor(model => model[0].WorkingStatus)
+            </div>
+             <div class="form-group">
+                WorkType:
+                @Html.EditorFor(model => model[0].WorkType)
+            </div>
+
+              <div class="form-group">
+                WorkTypeDetails:
+                @Html.EditorFor(model => model[0].WorkTypeDetails)
+            </div>
+             <div class="form-group">
+                SourceOfInformation:
+                @Html.EditorFor(model => model[0].SourceOfInformation)
+            </div>
+             <div class="form-group">
+                applyreason:
+                @Html.EditorFor(model => model[0].applyreason)
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+               
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

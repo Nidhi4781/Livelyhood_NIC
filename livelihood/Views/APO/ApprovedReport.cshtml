@@ -1,0 +1,96 @@
+﻿@using livelihood.Models
+@using livelihood.Models.ViewModel
+@{
+    ViewData["Title"] = "ApprovedTraineeReport";
+    Layout = "~/Views/Shared/_APOLayout.cshtml";
+    //var filter = ViewBag.filter;
+
+}
+@{
+    <script>
+        $(document).on('click', '.confirm', function () {
+            return confirm($(this).attr('data-confirm'));
+        });
+        $(document).on('click', '.status_filter', function () {
+
+        });
+    </script>
+    <script>
+        $(document).on('click', '.buttonaccept', function () {
+            debugger;
+            var id = $(this).attr('data-attr');
+            var type = $(this).attr('data-type');
+            $('.reqid').val(id);
+            $('.type').val(type);
+            arr.push(val(type).toString());
+        });
+
+    </script>
+}
+@*<h1>Index</h1>*@
+<div class="top-btnsection d-flex justify-content-between align-items-center">
+    <div id="destination"><h1>Accepted Application</h1> </div>
+    @* <nav aria-label="breadcrumb" class="breadcrumb-outer">
+    <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a>Home</a></li>
+    <li class="breadcrumb-item">Ideas</li>
+    </ol>
+    </nav>*@
+    @*
+
+    <div class="d-flex">
+    <a href="/ideas/create/" class="btn btn-theme d-flex"><i class="fas fa-plus white-icon mt-1 mr-2"></i>Create</a>
+    </div>
+    *@
+</div>
+
+<h1>Accepted Application</h1>
+<div class="card card-bordered">
+    <div class="card-body">
+        <table class="data-table display order_table " data-source="/APO/ListApprovedReport?" data-key="10">
+            <thead>
+                <tr>
+                    <th class="no-sort">Sl. No</th>
+                    <th>
+                        Unique Number
+                    </th>
+
+                    <th class="no-sort">
+                        Trainee Name
+                    </th>
+                    @* <th>
+                    Status
+                    </th>*@
+                    <th>
+                        Fname
+                    </th>
+                    <th>
+                        Gender
+                    </th>
+                    <th>
+                        Contact Number
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        IsDivyang
+                    </th>
+                    <th>
+                        Remark
+                    </th>
+                    <th>
+                       Approved Date
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th class="no-sort">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+

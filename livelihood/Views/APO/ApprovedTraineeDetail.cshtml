@@ -1,0 +1,343 @@
+﻿@model livelihood.Models.TraineeRegistration
+
+@{
+    ViewData["Title"] = "TraineeDetail";
+    Layout = "~/Views/Shared/_APOLayout.cshtml";
+}
+
+@{
+
+    <script>
+        $(document).on('click', '.confirm', function () {
+            return confirm($(this).attr('data-confirm'));
+        });
+
+        $(document).on('click', '.buttonaccept', function () {
+            debugger;
+            var id = $(this).attr('data-attr');
+            var type = $(this).attr('data-type');
+            $('.reqid').val(id);
+            $('.type').val(type);
+            arr.push(val(type).toString());
+        });
+
+    </script>
+
+}
+<div class="top-btnsection d-flex justify-content-between align-items-center">
+    <div id="destination"><h1>Idea List</h1> </div>
+    <nav aria-label="breadcrumb" class="breadcrumb-outer">
+        <ol class="breadcrumb">
+        </ol>
+    </nav>
+    @*
+
+    <div class="d-flex">
+    <a href="/ideas/create/" class="btn btn-theme d-flex"><i class="fas fa-plus white-icon mt-1 mr-2"></i>Create</a>
+    </div>
+    *@
+</div>
+<div class="page-title">
+    <h3 style="font-weight: bold;">Approved Trainee Details</h3>
+    @*
+    <div class="action">
+    <a class="btn btn-submit" href="javascript:window.history.back();">Back to My Tickets</a>
+    </div>*@
+</div>
+
+
+<div class="card card-bordered">
+    <div class="card card-body details">
+        <div class="row">
+
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">District</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@ViewBag.DistrictNameEnglish</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Livelihood College Name</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@ViewBag.VTPName</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Course Name</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@ViewBag.coursename</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Trainee Name</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.Traineename</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Father Name</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.Fname</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Contact Number</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.Contactno</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Email</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.Email</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Gender</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.Gender</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Whether Divyang</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.IsDivyang</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Category</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.Category</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Address</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.Address</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">District</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.AddDist</label>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Block</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.AddBlock</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">State</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.AddState</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Course Name</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@ViewBag.coursename</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Urban/Rural</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.UrbanRural</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">City</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.City</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Ward</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.Ward</label>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Gram Panchayat</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.GramPanchayat</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Gram</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.Gram</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Vidhan Sabha</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.VidhanSabha</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Education</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.Education</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Pin Code</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.PinCode</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Working Status</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.WorkingStatus</label>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Work Type</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.WorkType</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Work Type Details</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.WorkTypeDetails</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Source of Information about the programme</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.SourceOfInformation</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Reason for applying the Livelihood Development Program</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.applyreason</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Declaration</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.isDeclaration</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <label for="input-placeholder" class="col-md-4 control-label bold">Approved Datetime</label>
+                    <label for="input-placeholder" class="col-md-1 control-label bold">:</label>
+                    <div class="col-md-7">
+                        <label class="right-label-small">@Model.apoActionDate</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

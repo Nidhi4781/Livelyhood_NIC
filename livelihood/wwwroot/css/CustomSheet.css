@@ -1,0 +1,192 @@
+﻿
+.srow, .img-responsive, .logos {width:100%;}
+.clrleft, .logos {float:left;}
+.clrright, .top-rightside {float:right;}
+.text-increaser dfn, .t-social ul {display:none;}
+.top-rightside, .c-skip, .text-increaser, .t-social, .t-sitemap {display:flex;}
+.text-increaser figure img, .t-social figure img, .t-sitemap a img {opacity:0.6;}
+.text-increaser figure:hover img, .t-social figure:hover img, .t-sitemap a:hover img {opacity:1;}
+
+
+/*MARGIN*/
+.mrgt-15 {margin-top:15px;}
+.mrgt-30, .login-top {margin-top:30px;}
+.c-skip, .text-increaser, .t-social {margin-right:10px;}
+.ph-tel span {margin-right:20px;}
+.text-increaser figure, .t-social figure {margin-bottom:0;}
+
+
+/*PADDING*/
+.pdt-15, .logos {padding-top:15px;}
+.c-skip, .text-increaser, .t-social {padding-right:10px;}
+.logos {padding-bottom:15px;}
+
+
+
+/*COLOR*/
+.credits a {color:rgba(256,256,256,0.4);}
+.top-menu ul li a:hover, .tabing-list .nav-tabs .nav-link {color:#fff;}
+.topstreap, .topstreap a {color:rgba(256,256,256,0.7);}
+.tabing-list .nav-tabs .nav-link:hover, .tabing-list .nav-tabs .nav-item.show .nav-link, .tabing-list .nav-tabs .nav-link.active {color:#000;}
+
+
+
+/*BACKGROUND*/
+.white-bg, .clients figure {background:#fff;}
+.topstreap {background:#333;}
+.yello-bg, .top-menu, .tabing-list .nav-tabs .nav-link:hover, .tabing-list .nav-tabs .nav-item.show .nav-link, .tabing-list .nav-tabs .nav-link.active {background: #f5c004;}/*orang*/
+.top-menu ul li a:hover {background:#29166f;}/*purpal*/
+.blue-bg, .tabing-list .nav-tabs .nav-link {background: #01458e;}
+.light-blue-bg {background: #f1f7fd;}
+.tabing-list {
+background: #deedfa;
+}
+/*29March2023 new css AKR..>,,*/
+.srow {width:100%;}
+.minst_info {border-right: 1px dashed #85aecb; margin-bottom: 0;}
+.heading2 {position:relative; border-bottom:1px solid #5dabff; padding-bottom:10px;}
+.heading2::after {position:absolute; left:0; right:0; margin: 0 auto; width:100px; height:3px; bottom:-2px; content:''; background:#01458e;}
+.mb-30 {margin-bottom:30px;}
+.mb-50 {margin-bottom:50px;}
+
+
+/*BORDER*/
+.c-skip, .text-increaser, .t-social {
+border-right: 1px solid rgba(256,256,256,0.3);
+}
+
+/*MULTY CSS*/
+.text-increaser figure, .t-social figure {cursor:pointer;}
+.text-right {text-align:right;}
+.clients figure {text-align:center;}
+.text-left {text-align:left;}
+a {text-decoration:none;}
+p {line-height: 30px; text-align: justify;}
+
+
+
+/*CUSTOM*/
+.topstreap {padding:5px 0; font-size:14px;}
+/*.logos figure {width:80px; float:left; margin-right:15px; margin-bottom:0;}
+.logos span {float:left;}*/
+.logos span small:first-child {font-weight:700;}
+.logos span small {font-size:20px; width:100%; float:left;}
+.top-menu ul li a {padding:10px 20px;}
+.clients figure {padding:10px; border-radius:5px;}
+.datainfo small {display:block;}
+.ministry {padding-top:0; margin-top: 0px;}
+/*.cong-minist {border: 1px solid #01458e; float: left; border-radius: 10px;}*/
+.cong-minist {
+text-align: right;
+}
+
+.cong-minist ul {
+padding: 0;
+list-style: none;
+display: inline-block;
+}
+
+.cong-minist ul li:first-child {
+margin-left: 14%;
+}
+
+.cong-minist ul li {
+border: 1px solid #fff;
+float: left;
+border-radius: 10px;
+width: 35%;
+margin-right: 30px;
+}
+
+.cong-minist ul li:last-child {
+margin-right: 0;
+}
+
+.cong-minist figure {
+border-radius: 10px 10px 0 0;
+overflow: hidden;
+padding: 10px;
+background: #fff;
+margin-bottom: 0;
+}
+
+.cong-minist figure img {
+border-radius: 10px;
+}
+
+.cong-minist dfn {
+background: #01458e;
+border-radius: 0 0 10px 10px;
+float: left;
+padding: 10px;
+min-height: 155px;
+font-style: normal;
+color: #fff;
+text-align: center;
+width:100%;
+}
+
+.cong-minist dfn span:first-child {
+font-size: 0.8rem;
+font-weight: 700;
+color: #f5c004;
+}
+
+.cong-minist dfn span {
+float: left;
+width: 100%;
+margin-bottom: 10px;
+font-size: 0.7rem;
+}
+.cong-minist dfn span:last-child {color: #ddd; font-weight: 700;}
+.tabing-list .nav-tabs .nav-link {margin-right:3px; border:none;}
+.tabing-list .nav-tabs {border-bottom: 1px solid #89c4f7; padding-bottom: 1px;}
+.newsline-cg {padding:20px;}
+.newsline-cg marquee {height:350px;}
+.newsline-cg ul {padding:0; margin:0; list-style:none;}
+.newsline-cg ul li {margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #7cb5e6; position:relative;}
+.newsline-cg ul li::after {position:absolute; left:0; bottom:-2px; width:100%; height:1px; border-bottom:1px dashed #fff; content:'';}
+.ministres {background: #146eb4; padding: 30px;}
+.heading-h3 {padding-bottom:5px; margin-bottom:20px; border-bottom:1px dashed #ddd; color: #01458e; font-size: 25px;}
+
+
+@media only screen and (max-width:767px) {
+    .logos a, .logos figure, .top-rightside {width:100%;}
+.logos a {float:left;}
+
+.ministry {margin-top:30px;}
+.logos figure {margin-right:0;}
+.cong-minist:first-child {margin-bottom:20px;}
+
+.logos figure {padding:0 100px;}
+.top-rightside {padding-top:20px;}
+.logos a, .top-rightside {text-align:center;}
+
+.cong-minist ul li:first-child {
+margin-left: 0;
+}
+
+.cong-minist ul li {
+margin-left: 0%;
+width: 45%;
+margin-right: 20px;
+}
+
+}
+
+@media only screen and (max-width:420px) {
+.cong-minist ul li {
+width: 100%;
+margin-right: 0;
+margin-bottom: 20px;
+}
+
+.cong-minist dfn {
+min-height: 100%;
+}
+
+.cong-minist dfn span {
+margin-bottom: 5px;
+font-size: 0.8rem;
+}
+}

@@ -1,0 +1,358 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="srow pt-0 pb-0">
+
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @*<div class="carousel-item active">
+            <img src="~/images/b-1.jpg" class="img-responsive" />
+            </div>*@
+            <div class="carousel-item active">
+                <img src="~/images/b-2.jpg" class="img-responsive" />
+            </div>
+            <div class="carousel-item">
+                <img src="~/images/b-3.jpg" class="img-responsive" />
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+</section>
+<!-- End Hero -->
+<!-- ======= Start Minister ======= -->
+<section id="ministry" class="ministres">
+    <div class="container-fluid" data-aos="fade-up">
+        <div class="row">
+            @*<div class="col-lg-7">
+            <div class="" style="margin:40px 30px;" >
+            <a href="#" target="_blank">
+            <img src="~/images/covid-19-banner7.jpg" style="width: 100%; height: 100%; border-radius: 10px; border: 1px solid #999" class="img-responsive" />
+            </a>
+            </div>
+            </div>*@
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="srow cong-minist">
+                            <ul>
+                                <li>
+                                    <figure>
+                                        <img src="~/img/shri-bhupesh-baghel.jpg" class="img-responsive" alt="Shri Bhupesh Baghel" />
+                                    </figure>
+                                    <dfn>
+                                        <span>Shri Bhupesh Baghel</span>
+                                        <span>Hon'ble Chief Minister</span>
+                                        <span>Government of Chhattisgarh</span>
+                                    </dfn>
+                                </li>
+                                <li>
+                                    <figure>
+                                        <img src="~/img/shri-umesh-nandkumar-patel.jpg" class="img-responsive" alt="Shri Umesh Nandkumar Patel" />
+                                    </figure>
+                                    <dfn>
+                                        <span>Shri Umesh Nandkumar Patel</span>
+                                        <span>
+                                            Hon’ble Minister, Government of Chhattisgarh,<br/>
+                                            Department of Skill Development, Technical Education,<br /> Employment & Training,
+                                            Higher Education, Science and technology, Sports and Youth Welfare
+                                        </span>
+                                        <span>Government of Chhattisgarh</span>
+                                    </dfn>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ======= Minister End ======= -->
+<!-- ======= Counts Section ======= -->
+<section id="counts" class="counts">
+    <div class="container-fluid" data-aos="fade-up">
+        <div class="row">
+            <div class="col-lg-2 col-md-6 mt-5 mt-lg-0">
+                <div class="count-box sec-card">
+                    <i class="icofont-university "></i>
+                    <span data-toggle="counter-up"><h2 style="padding:10px">@ViewData["TotalLC"]</h2></span>
+                    <a asp-controller="APO" asp-action="LivelihoodColleges">Livelihood Colleges</a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6  mt-5 mt-lg-0">
+                <div class="count-box sec-card">
+                    <i class="icofont-graduate "></i>
+                    <span data-toggle="counter-up"><h2 style="padding:10px"><Label ID="lbl_total_lcer" style="font-size:2rem!important;"> @ViewData["TotalCertified"] </Label></h2></span>
+                    <p style="text-align:center!important; font-weight:bold;">Certified Beneficiaries</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mt-5 mt-lg-0">
+                <div class="count-box sec-card">
+                    <i class="icofont-group-students "></i>
+                    <span data-toggle="counter-up"><h2 style="padding:10px"><Label ID="lbl_total_lreg" style="font-size:2rem!important;"> @ViewData["TotalReg"] </Label></h2></span>
+                    <p style="text-align:center!important; font-weight:bold;">Registered Beneficiaries</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mt-5 mt-lg-0">
+                <div class="count-box sec-card">
+                    <i class="icofont-education "></i>
+                    <span data-toggle="counter-up"><h2 style="padding:10px"><Label ID="lbl_total_lcou" style="font-size:2rem!important;"> @ViewData["Totalcourse"] </Label></h2></span>
+                    <p style="text-align:center!important; font-weight:bold;">Registered Courses</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 mt-5 mt-lg-0">
+                <div class="count-box sec-card">
+                    <i class="icofont-engineer "></i>
+                    <span data-toggle="counter-up"><h2 style="padding:10px"><Label ID="lbl_total_lcou" style="font-size:2rem!important;"> @ViewData["Totalplaced"] </Label></h2></span>
+                    <p style="text-align:center!important; font-weight:bold;">Placed Beneficiaries</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6 mt-5 mt-lg-0">
+                <div class="count-box sec-card">
+                    <i class="icofont-architecture-alt "></i>
+                    <span data-toggle="counter-up"><h2 style="padding:10px"><Label ID="lbl_total_lun" style="font-size:2rem!important;"> @ViewData["TotalUnder"] </Label></h2></span>
+                    <p style="text-align:center!important; font-weight:bold;">Undertraining Beneficiaries</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End Counts Section -->
+<!-- ======= About Section ======= -->
+<section id="about" class="aboutus">
+    <div class="container-fluid" data-aos="fade-up">
+        <div class="row">
+            <div class="col-lg-8 mt-5 mt-md-0">
+                <div class="srow ">
+                    <h1 class="heading-one">Welcome to State Project Livelihood Society</h1>
+                    <p>
+                        With rapid growth in the national economy and a young India, our youth need development of relevant skills, both for their own growth and for enabling overall development. Chhattisgarh has recognised this growth imperative and is the first state in India and only the second government after the South-African Government to give its youth the right to skill. The Chhattisgarh Right of Youth to Skill Development Act, 2013 grants every person between the ages of 14 and 45 the right to develop her or his skills from among notified skills, subject only to meeting eligibility requirements, and District Skill Development Authorities set up under District Collectors are bound to provide skill development training within 90 days of receiving any demand in this behalf.
+                    </p>
+                    <a href="public/WelcomeLC.aspx" class="get-started-btn scrollto">Read More...</a>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-5 mt-md-0">
+                <div class="srow tabing-list">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#upcounselling" type="button" role="tab" aria-controls="home" aria-selected="true">Upcoming Counselling</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#updownloads" type="button" role="tab" aria-controls="profile" aria-selected="false">Downloads</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#upnotifications" type="button" role="tab" aria-controls="contact" aria-selected="false">Notifications</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="upcounselling" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="srow newsline-cg">
+                                <marquee width="100%" direction="up" behavior="scroll" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">
+                                    <ul>
+                                        <li>
+                                            <i class="fa fa-long-arrow-right"></i>
+                                            <span>No Upcoming Counselling Till Now...</span>
+                                        </li>
+
+                                        <li>
+                                            <i class="fa fa-long-arrow-right"></i>
+                                            <span>No Upcoming Counselling Till Now...</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-long-arrow-right"></i>
+                                            <span>No Upcoming Counselling Till Now...</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-long-arrow-right"></i>
+                                            <span>No Upcoming Counselling Till Now...</span>
+                                        </li>
+                                    </ul>
+                                </marquee>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="updownloads" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="srow newsline-cg">
+                                <marquee width="100%" direction="up" behavior="scroll" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">
+                                    <ul>
+                                        <li>
+                                            <i class="fa fa-long-arrow-right"></i>
+                                            <span>[08 Oct 2019] <a class="mq-style" target="_blank" href="~/pdf/AEBAS_Guideline_hindi.pdf">Detail Guideline to Register Trainee / Trainer / Biometric Admin and Device Activation on BAS Portal... [Hindi].</a></span>
+
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-long-arrow-right"></i>
+                                            <span>[08 Oct 2019] <a class="mq-style" target="_blank" href="~/pdf/AEBAS_Guideline.pdf">Detail Guideline to Register Trainee / Trainer / Biometric Admin and Device Activation on BAS Portal... [English].</a></span>
+
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-long-arrow-right"></i>
+                                            <span>[14 Sep 2019] <a class="mq-style" target="_blank" href="~/pdf/SoftSkillContent.pdf">Soft Skill Content</a></span>
+
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-long-arrow-right"></i>
+                                            <span>[10 Aug 2019] <a class="mq-style" target="_blank" href="~/pdf/cctv_camera_specification.docx">CCTV Specification</a></span>
+
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-long-arrow-right"></i>
+                                            <span>[03 Aug 2019] <a class="mq-style" target="_blank" href="~/pdf/Equipment_Detail_Course_Wise.xlsx">Equipment Detail Coursewise</a></span>
+
+                                        </li>
+
+                                    </ul>
+                                </marquee>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="upnotifications" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="srow newsline-cg">
+                                <marquee width="100%" direction="up" behavior="scroll" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">
+                                    <ul>
+                                        <li>
+                                            <i class="fa fa-long-arrow-right"></i>
+                                            <span>[08 Sep 2020] <a class="mq-style" href="~/pdf/EOI_Korba.pdf" target="_blank">जिला परियोजना लाईवलीहुड कॉलेज सोसायटी कोरबा (छ. ग.) अंतर्गत आमंत्रित रूचि की अभिव्यक्ति (ई.ओ.आई)</a></span>
+                                        </li>
+
+
+                                        <li>
+                                            <i class="fa fa-long-arrow-right"></i>
+                                            <span>[08 Sep 2020] <a class="mq-style" href="~/pdf/EOI_Korba.pdf" target="_blank">जिला परियोजना लाईवलीहुड कॉलेज सोसायटी कोरबा (छ. ग.) अंतर्गत आमंत्रित रूचि की अभिव्यक्ति (ई.ओ.आई)</a></span>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-long-arrow-right"></i>
+                                            <span>[08 Sep 2020] <a class="mq-style" href="~/pdf/EOI_Korba.pdf" target="_blank">जिला परियोजना लाईवलीहुड कॉलेज सोसायटी कोरबा (छ. ग.) अंतर्गत आमंत्रित रूचि की अभिव्यक्ति (ई.ओ.आई)</a></span>
+                                        </li>
+
+                                    </ul>
+                                </marquee>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End About -->
+<!--<%-------Top 10 Start-------%>-->
+<section class="srow light-blue-bg">
+    <div class="container-fluid" data-aos="fade-up">
+        <h4 class="datainfo text-center">Top Sectors based on Placement 2019-2020</h4>
+        <div class="card-body cbody text-center">
+            <div class="row">
+                <div class="col col-set">
+                    <img src="~/img/construction.png" class="t-10-c">
+                    <h6>Construction</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/info_telecomm.png" class="t-10-c">
+                    <h6>Info & Comm Technology</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/plasticprocessing.png" class="t-10-c">
+                    <h6>Plastic Processing</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/automotive.png" class="t-10-c">
+                    <h6>Automotive-Repair</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/electronics.png" class="t-10-c">
+                    <h6>Electronics</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-set">
+                    <img src="~/img/agriculture.png" class="t-10-c">
+                    <h6>Agriculture</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/apparel.png" class="t-10-c">
+                    <h6>Apparel</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/medical.png" class="t-10-c">
+                    <h6>Medical & Nursing</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/electrical.png" class="t-10-c">
+                    <h6>Electrical</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/plumber.png" class="t-10-c">
+                    <h6>Plumbing</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--<%-------Top 10 End-------%>-->
+<!--<%-------Top 10 Start-------%>-->
+<section class="srow yello-bg">
+    <div class="container-fluid set-10-margin" data-aos="fade-up">
+        <h4 class="datainfo text-center"><small>2019-2020</small> Top Sectors based on Candidate Trained</h4>
+        <div class="card-body cbody text-center">
+            <div class="row">
+                <div class="col col-set">
+                    <img src="~/img/ites.png" class="t-10-c">
+                    <h6>IT-ITES</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/apparel_2.png" class="t-10-c">
+                    <h6>Apparel</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/construction_2.png" class="t-10-c">
+                    <h6>Construction</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/agriculture_2.png" class="t-10-c">
+                    <h6>Agriculture</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/driver.png" class="t-10-c">
+                    <h6>Automotive</h6>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col col-set">
+                    <img src="~/img/securityguard.png" class="t-10-c">
+                    <h6>Security</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/automotive_2.png" class="t-10-c">
+                    <h6>Automotive-Repair</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/electrical_2.png" class="t-10-c">
+                    <h6>Electrical</h6>
+                </div>
+                <div class="col col-set">
+                    <img src="~/img/rubber.png" class="t-10-c">
+                    <h6>Rubber</h6>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--<%-------Top 10 End-------%>-->
+<!-- ======= Clients Section ======= -->
+<!-- End Clients Section -->

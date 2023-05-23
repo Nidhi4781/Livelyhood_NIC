@@ -1,0 +1,42 @@
+﻿@model IEnumerable<livelihood.Models.VTP_Model>
+@{
+    ViewBag.Title = "Livelihood Colleges";
+    Layout = "~/Views/Shared/_StateLayout.cshtml";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.District)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.main_VTPRegNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VTPName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) 
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.District)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.main_VTPRegNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VTPName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "OrganisationChart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/css/tree_maker-min.css" rel="stylesheet" />
+<script src="~/vendor/js/tree_maker-min.js"></script>
+
+<!-- ======= Breadcrumbs ======= -->
+<section class="breadcrumbs">
+    <div class="container-fluid">
+
+        <ol>
+            <li><a href="#">Home >></a></li>
+            <li><a href="#">About US >></a></li>
+            <li>Organization Chart</li>
+        </ol>
+
+    </div>
+</section><!-- End Breadcrumbs -->
+<!-- ======= Organisation Chart ======= -->
+<section class="organization-chart">
+    <div class="container">
+        <div class="row cont-margin">
+            <div class="col-lg-12 col-md-12 mt-5 mt-md-0">
+                <h4 style="text-decoration:underline">Organization Chart</h4><br />
+                <div id="my_tree">
+                    <script type="text/javascript">
+                        let tree = {
+                            1: {
+                                2: {
+                                    3:
+                                    {
+
+                                        4: '',
+                                        5: '',
+                                        6: '',
+                                        7: '',
+
+                                    }
+                                }
+
+                            },
+                        };
+
+                        let treeParams = {
+                            1: { trad: 'Principal Secretary / Secretary' },
+                            2: { trad: 'Chief Executive Officer (CEO)' },
+                            3: { trad: 'Additional Chief Executive Officer' },
+                            4: { trad: 'Joint Director (Finance)' },
+                            5: { trad: 'Deputy Chief Executive Officer (Dy. CEO) <br> Skill Training' },
+                            6: { trad: 'Deputy Chief Executive Officer (Dy. CEO) <br> Planning Monitoring & Programme Execution' },
+                            7: { trad: 'Deputy Chief Executive Officer (Dy. CEO) Information Technology ' },
+                        };
+
+                        treeMaker(tree, {
+                            id: 'my_tree', card_click: function (element) {
+                                console.log(element);
+                            },
+                            treeParams: treeParams,
+                            'link_width': '4px',
+                            'link_color': '#0097A7',
+                        });
+                    </script>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,78 @@
+﻿@model List<livelihood.Models.AllPendingApplication>
+@using livelihood.Models.ViewModel
+@using livelihood.Models
+
+@{
+    ViewData["Title"] = "PendingApplicationForms";
+    Layout = "~/Views/Shared/_APOLayout.cshtml";
+}
+<div class="top-btnsection d-flex justify-content-between align-items-center">
+    <div id="destination"><h1>Idea List</h1> </div>
+    @* <nav aria-label="breadcrumb" class="breadcrumb-outer">
+    <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a>Home</a></li>
+    <li class="breadcrumb-item">Ideas</li>
+    </ol>
+    </nav>*@
+    @*
+
+    <div class="d-flex">
+    <a href="/ideas/create/" class="btn btn-theme d-flex"><i class="fas fa-plus white-icon mt-1 mr-2"></i>Create</a>
+    </div>
+    *@
+</div>
+
+<div class=" row " style="text-align: center;">
+<h1> Pending Application Forms</h1>
+<div class=" center">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                            @Html.Label("Course")
+                    </th>
+                    <th>
+                            @Html.Label("Number of Applications")
+                    </th>
+                    <th>
+                        @Html.Label("Create Batch")
+                    </th>                 
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.coursename)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.totalApplication)
+                        </td>
+                        <td>
+                            @{
+                                if (item.totalApplication > 1)
+                                {
+                                        //<li class="active"><a href="/BPExApproval/Index?filter=@item.coursecode">Approved Idea List </a></li>
+                                        <a href="/APO/PendingLTB?coursecode=@item.coursecode" style="text-align: -webkit-center;"><button class="btn  ml-2 btn-theme ">Select Course for Batch Creation (LTB)</button></a>
+
+                                      
+                                    //<a asp-action="Edit" asp-route-id="@item.coursecode">   <span class='badge badge-success' style='background-color:#ffd600 !important;color:black !important;'>Select Course for Batch Creation (LTB)</span></a>
+                                    //<a asp-action="Edit" asp-route-id="@item.coursecode">Edit</a>
+                                    // <a class="dropdown-item" href="/Account/ChangePassword"><i class="mdi mdi-lock mr-2"></i>Change Password</a>
+                                }
+                                else
+                                {
+                                   @Html.Label("Not possible to select because not minimum candidates")
+                                }
+                            }
+                        </td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
